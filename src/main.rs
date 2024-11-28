@@ -7,6 +7,8 @@ fn main() {
     ciclos();
     ejemplo_factorial();
     ejemplo_primo();
+    ejemplo_string_slice();
+    copy_and_move();
 }
 
 fn inicio_funcion(texto: &str) {
@@ -123,4 +125,36 @@ fn es_primo(numero: u128) -> bool {
     }
     resultado = true;
     return resultado;
+}
+
+fn ejemplo_string_slice() {
+    //let recibe_str = string_slice(); //->VER NOTA A
+    string_slice();
+}
+
+fn string_slice() {
+    inicio_funcion("8. str (pedazo de string)");
+    let saludo = "hola";
+    println!("{}", saludo);
+    println!("{}", saludo);
+    //return saludo //->NOTA A: si intentamos retornar la variable, nos genera un error ya que 'str' no contiene el razgo Sized por lo que en tiempo de ejecución nos e puede conocer el tamaño de dicha variable
+    //Después de que se imprima la variable saludo, dicha variable es eliminada del stack de memoria por RUST, ya que no se vuelve a usar en el código
+}
+
+fn copy_and_move() {
+    //copy
+    let var1 = 2;
+    let var2 = var1;
+    let mut var3 = var1 + var2;
+    var3 = var3 + 1;
+    println!(
+        "el valor de var1 es: {}, de var2 es: {} y de var3 es: {}",
+        var1, var2, var3
+    ); //Aquí se comprueba que al asignarle una variable a otra variable, lo que realiza es una copia del valor
+
+    //move
+    let s1 = String::from("texto1");
+    let s2 = s1;
+    //println!("el contenido de s1 es: {} y de s2 es: {}", s1, s2);//->Aquí se comprueba que los strings al ser almacenados en el HEAP y no en el STACK, RUST automáticamente mueve el puntero de una variable a la otra al momento de asignarlas. Por lo que esta línea genera un error ya que s1 deja de existir
+    println!("el valor de s2 es: {}", s2);
 }
