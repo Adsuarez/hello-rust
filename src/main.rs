@@ -74,10 +74,7 @@ fn ciclos() {
         numero = numero - 10;
         break;
     }
-    println!(
-        "al final de loop el valor de la variable 'numero' es: {}",
-        numero
-    );
+    println!("al final de loop el valor de la variable 'numero' es: {}", numero);
 }
 
 fn ejemplo_factorial() {
@@ -85,7 +82,8 @@ fn ejemplo_factorial() {
     let resultado_factorial = calcular_factorial(numero_factorial);
     println!(
         "el resultado del factorial para el valor {} es: {}",
-        numero_factorial, resultado_factorial
+        numero_factorial,
+        resultado_factorial
     )
 }
 
@@ -105,10 +103,7 @@ fn calcular_factorial(numero: i128) -> i128 {
 fn ejemplo_primo() {
     let numero_incognita: u128 = 999983;
     let resultado_es_primo = es_primo(numero_incognita);
-    println!(
-        "¿el número {} es primo? = {}",
-        numero_incognita, resultado_es_primo
-    );
+    println!("¿el número {} es primo? = {}", numero_incognita, resultado_es_primo);
 }
 
 fn es_primo(numero: u128) -> bool {
@@ -118,7 +113,7 @@ fn es_primo(numero: u128) -> bool {
     if numero <= 1 {
         return resultado;
     }
-    for i in 2..((numero_normalizado.sqrt() as u128) + 1) {
+    for i in 2..(numero_normalizado.sqrt() as u128) + 1 {
         if numero % i == 0 {
             return resultado;
         }
@@ -147,10 +142,7 @@ fn copy_and_move() {
     let var2 = var1;
     let mut var3 = var1 + var2;
     var3 = var3 + 1;
-    println!(
-        "el valor de var1 es: {}, de var2 es: {} y de var3 es: {}",
-        var1, var2, var3
-    ); //Aquí se comprueba que al asignarle una variable a otra variable, lo que realiza es una copia del valor
+    println!("el valor de var1 es: {}, de var2 es: {} y de var3 es: {}", var1, var2, var3); //Aquí se comprueba que al asignarle una variable a otra variable, lo que realiza es una copia del valor
 
     //move
     let s1 = String::from("texto1");
