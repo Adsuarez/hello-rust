@@ -164,5 +164,5 @@ fn prueba_concatenar_str() {
     //let concatenar = concat!(texto_1, texto_2); //->Esto arroja error dado a que espera solo literales como "hola", más no un str
     //let mut concatenar = texto_1 + texto_2;// -> esto arroja error dado a que no se pueden sumar str porque requiere que la adisión tenga un Ownership
     texto_2 = "fue añadida";
-    println!("{} {}", texto_1, texto_2)
+    println!("{} {}", texto_1, texto_2); //Esta sería la única forma de unir dos str
 }
