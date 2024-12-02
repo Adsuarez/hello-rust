@@ -10,6 +10,7 @@ fn main() {
     ejemplo_string_slice();
     copy_and_move();
     prueba_concatenar_str();
+    strings();
 }
 
 fn inicio_funcion(texto: &str) {
@@ -138,7 +139,7 @@ fn string_slice() {
 }
 
 fn copy_and_move() {
-    inicio_funcion("9. diferencia entre copy y move");
+    inicio_funcion("9. Copy, Move y Clone");
     //copy
     let var1 = 2;
     let var2 = var1;
@@ -151,6 +152,12 @@ fn copy_and_move() {
     let s2 = s1;
     //println!("el contenido de s1 es: {} y de s2 es: {}", s1, s2);//->Aquí se comprueba que los strings al ser almacenados en el HEAP y no en el STACK, RUST automáticamente mueve el puntero de una variable a la otra al momento de asignarlas. Por lo que esta línea genera un error ya que s1 deja de existir
     println!("el valor de s2 es: {}", s2);
+
+    //copy de strings (clone)
+    let texto_1 = String::from("palabra");
+    let texto_2: String = texto_1.clone();
+    println!("la variable texto_1 es: {}", texto_1);
+    println!("la variable texto_2 es: {}", texto_2);
 }
 
 fn prueba_concatenar_str() {
@@ -166,4 +173,14 @@ fn prueba_concatenar_str() {
     texto_2 = "fue añadida";
     println!("{} {}", texto_1, texto_2); //Esta sería la única forma de unir dos str
     //en conclusión como el str se almacena en STACK, debe tener un tamaño fijo conocido. Y al permitirme ponerle mut a la variable, lo único que puedo hacer es reasignarle un valor, pero no mutar el valor en sí mismo.
+}
+
+fn strings() {
+    inicio_funcion("11. strings");
+    let texto_1 = String::from("Texto inmutable");
+    println!("la variable texto_1 es inmutable y su contenido es: {}", texto_1);
+    let mut texto_2 = String::from("texto mutable");
+    println!("la variable texto_2 es mutable y su contenido inicial es: {}", texto_2);
+    texto_2 = texto_2 + " gracias a la adición con el símbolo '+'";
+    println!("la variable texto_2 ha sido mutada y su nuevo contenido es: {}", texto_2);
 }
