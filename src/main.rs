@@ -11,6 +11,8 @@ fn main() {
     copy_and_move();
     prueba_concatenar_str();
     strings();
+    ownership_en_parametros();
+    ownership_en_parametros_strings()
 }
 
 fn inicio_funcion(texto: &str) {
@@ -183,4 +185,46 @@ fn strings() {
     println!("la variable texto_2 es mutable y su contenido inicial es: {}", texto_2);
     texto_2 = texto_2 + " gracias a la adición con el símbolo '+'";
     println!("la variable texto_2 ha sido mutada y su nuevo contenido es: {}", texto_2);
+}
+
+fn ownership_en_parametros() {
+    inicio_funcion("12. Propiedad al pasar parámetros a una función");
+    //con valores que hacen el copy automático
+    let numero = 20;
+    fn imprimir_numero(parametro: i32) {
+        println!("desde la función 'imprimir_numero' el valor del parámetro es: {}", parametro)
+    }
+    imprimir_numero(numero);
+    println!("el valor de la variable 'numero' después de pasarse como parámetro es: {}", numero); //Esto demuestra que numero no ha dejado de existir aunque su valor se pasó como parámetro, lo que indica que solo se copió
+    //con str que no se puede copiar, solo pasar como referencia
+    let pieza_de_string = "TEXTO";
+    fn imprimir_pieza_de_texto(slice: &str) {
+        //aquí si no se pone el símbolo '&' genera un error, ya que se está obligado a pasar la referencia del str y no su valor
+        println!("desde la función 'imprimir_pieza_de_texto' el valor del parámetro es: {}", slice)
+    }
+    imprimir_pieza_de_texto(&pieza_de_string);
+    println!("el valor de la variable 'pieza_de_string' después de pasarse como parámetro es: {}", pieza_de_string)
+}
+
+fn ownership_en_parametros_strings() {
+    inicio_funcion("13. Propiedad al pasar Strings como parámetros a una función");
+    //perder propiedad
+    let texto = String::from("texto");
+    fn prestar(parametro: String) -> String {
+        return parametro;
+    }
+    let recibidor = prestar(texto); //la variable 'texto' deja de existir al pasarse como parámetro en la función 'prestar'
+    println!("la variable 'recibidor' contiene el valor: {}", recibidor);
+
+    //prestar propiedad
+    let palabra = String::from("palabra");
+    fn calcular_longitud_string(cadena: &String) -> usize {
+        cadena.len()
+    }
+    let longitud = calcular_longitud_string(&palabra);
+    println!(
+        "La variable 'palabra' contiene el valor: {}, el cual tiene {} caracteres",
+        palabra,
+        longitud
+    ); //Aquí se puede volver a usar la variable 'palabra' porque se prestó momentaneamente la referencia a su valor. Y al finalizar la función 'calcular_longitud_string' le devolvió la propiedad a la variable 'palabra'
 }
