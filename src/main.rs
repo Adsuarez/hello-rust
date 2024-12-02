@@ -165,4 +165,5 @@ fn prueba_concatenar_str() {
     //let mut concatenar = texto_1 + texto_2;// -> esto arroja error dado a que no se pueden sumar str porque requiere que la adisión tenga un Ownership
     texto_2 = "fue añadida";
     println!("{} {}", texto_1, texto_2); //Esta sería la única forma de unir dos str
+    //en conclusión como el str se almacena en STACK, debe tener un tamaño fijo conocido. Y al permitirme ponerle mut a la variable, lo único que puedo hacer es reasignarle un valor, pero no mutar el valor en sí mismo.
 }
