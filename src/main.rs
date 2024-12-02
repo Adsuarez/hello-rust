@@ -9,6 +9,7 @@ fn main() {
     ejemplo_primo();
     ejemplo_string_slice();
     copy_and_move();
+    prueba_concatenar_str();
 }
 
 fn inicio_funcion(texto: &str) {
@@ -137,6 +138,7 @@ fn string_slice() {
 }
 
 fn copy_and_move() {
+    inicio_funcion("9. diferencia entre copy y move");
     //copy
     let var1 = 2;
     let var2 = var1;
@@ -149,4 +151,18 @@ fn copy_and_move() {
     let s2 = s1;
     //println!("el contenido de s1 es: {} y de s2 es: {}", s1, s2);//->Aquí se comprueba que los strings al ser almacenados en el HEAP y no en el STACK, RUST automáticamente mueve el puntero de una variable a la otra al momento de asignarlas. Por lo que esta línea genera un error ya que s1 deja de existir
     println!("el valor de s2 es: {}", s2);
+}
+
+fn prueba_concatenar_str() {
+    inicio_funcion("10. prueba concatenar str");
+    let mut texto_1 = "palabra";
+    println!("{}", texto_1);
+    texto_1 = "nueva palabra";
+    println!("{}", texto_1);
+    let mut texto_2 = "añadida";
+    println!("{}", texto_2);
+    //let concatenar = concat!(texto_1, texto_2); //->Esto arroja error dado a que espera solo literales como "hola", más no un str
+    //let mut concatenar = texto_1 + texto_2;// -> esto arroja error dado a que no se pueden sumar str porque requiere que la adisión tenga un Ownership
+    texto_2 = "fue añadida";
+    println!("{} {}", texto_1, texto_2)
 }
