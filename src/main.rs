@@ -12,7 +12,8 @@ fn main() {
     prueba_concatenar_str();
     strings();
     ownership_en_parametros();
-    ownership_en_parametros_strings()
+    ownership_en_parametros_strings();
+    exercise_1_ownership();
 }
 
 fn inicio_funcion(texto: &str) {
@@ -236,4 +237,26 @@ fn ownership_en_parametros_strings() {
     }
     mutar_string(&mut nombre);
     println!("Al pasar la variable 'nombre' a la función 'mutar_string' su valor es: {}", nombre);
+}
+
+fn exercise_1_ownership() {
+    inicio_funcion("Exercise 1: Ownership");
+    println!("-> Por favor introduce tu nombre: ");
+    let mut name = String::new();
+    std::io::stdin().read_line(&mut name).unwrap();
+    fn elimina_caracteres_del_enter(text: &mut String) {
+        text.pop();
+        text.pop();
+    }
+    elimina_caracteres_del_enter(&mut name);
+    fn add_string(text: &mut String) {
+        text.insert_str(0, "   Chao ");
+    }
+    fn longitud_string(text: &String) -> usize {
+        text.len()
+    }
+    let longitud = longitud_string(&name);
+    println!("   Tu nombre {} está formado por {} caracteres", name, longitud);
+    add_string(&mut name);
+    println!("{}", name);
 }
