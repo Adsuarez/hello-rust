@@ -14,6 +14,7 @@ fn main() {
     ownership_en_parametros();
     ownership_en_parametros_strings();
     exercise_1_ownership();
+    estructura_como_tupla();
 }
 
 fn inicio_funcion(texto: &str) {
@@ -259,4 +260,18 @@ fn exercise_1_ownership() {
     println!("   Tu nombre {} está formado por {} caracteres", name, longitud);
     add_string(&mut name);
     println!("{}", name);
+}
+
+fn estructura_como_tupla() {
+    inicio_funcion("14. struct como tupla");
+    struct RGBColor(u8, u8, u8);
+    let rojo = RGBColor(255, 0, 0);
+    let celeste = RGBColor(0, 255, 255);
+    println!("el código RGB para el color rojo es: ({}, {}, {})", rojo.0, rojo.1, rojo.2);
+    println!(
+        "el código RGB para el color celeste es: ({}, {}, {})",
+        celeste.0,
+        celeste.1,
+        celeste.2
+    )
 }
