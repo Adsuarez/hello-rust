@@ -227,4 +227,13 @@ fn ownership_en_parametros_strings() {
         palabra,
         longitud
     ); //Aquí se puede volver a usar la variable 'palabra' porque se prestó momentaneamente la referencia a su valor. Y al finalizar la función 'calcular_longitud_string' le devolvió la propiedad a la variable 'palabra'
+
+    //prestar propiedad y modificar el valor
+    let mut nombre = String::from("Janito");
+    println!("Aquí la variable 'nombre' contiene el valor: {}", nombre);
+    fn mutar_string(texto: &mut String) {
+        texto.push_str(" alimaña");
+    }
+    mutar_string(&mut nombre);
+    println!("Al pasar la variable 'nombre' a la función 'mutar_string' su valor es: {}", nombre);
 }
