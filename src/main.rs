@@ -15,6 +15,7 @@ fn main() {
     ownership_en_parametros_strings();
     exercise_1_ownership();
     estructura_como_tupla();
+    estructura_sin_implementacion();
 }
 
 fn inicio_funcion(texto: &str) {
@@ -274,4 +275,39 @@ fn estructura_como_tupla() {
         celeste.1,
         celeste.2
     )
+}
+
+fn estructura_sin_implementacion() {
+    inicio_funcion("15. struct sin implementación");
+    #[derive(Debug)] //este trair es obligatorio escribirlo al principio de la función que intente imprimir la struct completa, o generará error
+    struct Suscriptor {
+        es_inteligente: bool,
+        nombre: String,
+        seguidores: u128,
+    }
+    //Opción 1: el parámetro de la función tiene un nombre distinto del campo de la estructura
+    fn nuevo_suscriptor_opcion1(nueva_persona: String) -> Suscriptor {
+        Suscriptor {
+            es_inteligente: true,
+            nombre: nueva_persona,
+            seguidores: 1550,
+        }
+    }
+    //Opción 2: el parámetro de la función tiene el mismo nombre del campo de la estructura
+    fn nuevo_suscriptor_opcion2(nombre: String) -> Suscriptor {
+        Suscriptor {
+            es_inteligente: false,
+            nombre,
+            seguidores: 19,
+        }
+    }
+    let suscriptor1 = nuevo_suscriptor_opcion1(String::from("Pedro"));
+    let suscriptor2 = nuevo_suscriptor_opcion2(String::from("Ruben"));
+    println!("Los datos del suscriptor 1 son: {:?}", suscriptor1);
+    println!("Los datos del suscriptor 2 son: {:?}", suscriptor2);
+    println!("Los datos separados del suscriptor 1 son:");
+    //las siguientes 3 lineas se debieron implementar para eliminar el warning que aparece al no haber accedido a los campos de la estructura en las impresiones de suscriptor1 y suscriptor2
+    println!("¿es inteligente?: {}", suscriptor1.es_inteligente);
+    println!("nombre: {}", suscriptor1.nombre);
+    println!("Cantidad de seguidores: {}", suscriptor1.seguidores)
 }
