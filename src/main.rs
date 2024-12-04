@@ -54,11 +54,19 @@ fn constant() {
 }
 
 fn shadowing() {
-    title("3. PRUEBA SHADOWING");
+    title("3. SHADOWING");
     let a: i32 = 1;
+    note("Se crea la primera vez la variable 'let a = 1'");
     let a: i32 = a + 23;
-    let a: i32 = a - 23 / 23; //el resultado es 1 debido a que la jerarquía de operaciones hace que primero se divida 23/23
+    note(
+        "se vuelve a crear la variable 'let a = a + 23' lo que primero recupera el valor previo de 'a' y luego lo asigna a la nueva variable 'let a'"
+    );
+    let a: i32 = a - 23 / 23;
+    note("se vuelve a crear la variable como se explicó en la nota anterior");
     println!("El resultado de la variable 'a' es: {}", a);
+    note(
+        "El resultado es 1 debido a que la jerarquía de operaciones hace que primero se divida 23/23"
+    );
 }
 
 fn tuples() {
