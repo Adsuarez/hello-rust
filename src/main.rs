@@ -22,6 +22,14 @@ fn title(texto: &str) {
     println!("\n{}", texto);
 }
 
+fn subtitle1(texto: &str) {
+    println!("  {}", texto)
+}
+
+fn conclusion(text: &str) {
+    println!(" -> {}", text)
+}
+
 fn prueba_inmutable() {
     title("1. PRUEBA INMUTABLE");
     let x = 2;
