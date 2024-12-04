@@ -1,5 +1,5 @@
 fn main() {
-    prueba_inmutable();
+    mutable_and_ummutable();
     prueba_constante();
     shadowing();
     tuples();
@@ -30,10 +30,10 @@ fn note(text: &str) {
     println!(" -> NOTE: {}", text)
 }
 
-fn prueba_inmutable() {
-    title("1. PRUEBA INMUTABLE");
+fn mutable_and_ummutable() {
+    title("1. MUTABLE E INMUTABLE");
     let x = 2;
-    println!("el valor de la variable inmutable 'x' es: {}", x);
+    println!("Se crea la variable 'let x' y su valor es: x = {}", x);
     note(
         "Al intentar reasignar 'x = 3' se genera un error ya que Por defecto 'let' crea variables inmutables"
     );
@@ -41,6 +41,9 @@ fn prueba_inmutable() {
     println!("el valor de la variable mutable 'y' es: {}", y);
     y = 8;
     println!("el nuevo valor de la variable mutable 'y' es: {}", y);
+    note(
+        "al agregar 'mut' se le indica al programa que el valor de la misma podrá ser cambiado o reasignado. En el ejemplo inicia 'y = 5' y luego cambia a 'y = 8'"
+    );
 }
 
 fn prueba_constante() {
