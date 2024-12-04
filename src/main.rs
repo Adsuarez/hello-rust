@@ -1,6 +1,6 @@
 fn main() {
     mutable_and_ummutable();
-    prueba_constante();
+    constant();
     shadowing();
     tuples();
     arrays();
@@ -46,10 +46,11 @@ fn mutable_and_ummutable() {
     );
 }
 
-fn prueba_constante() {
-    title("2. PRUEBA CONSTANTE");
+fn constant() {
+    title("2. CONSTANTE");
     const PI: f64 = 3.141516;
     println!("el valor de la constante 'PI' es: {}", PI);
+    note("Se recomienda que las constantes sean 'upper case snake case' ejemplo: EDAD_MINIMA");
 }
 
 fn shadowing() {
