@@ -18,13 +18,12 @@ fn main() {
     estructura_sin_implementacion();
 }
 
-fn inicio_funcion(texto: &str) {
-    println!("");
-    println!("{}", texto);
+fn title(texto: &str) {
+    println!("\n{}", texto);
 }
 
 fn prueba_inmutable() {
-    inicio_funcion("1. PRUEBA INMUTABLE");
+    title("1. PRUEBA INMUTABLE");
     let x = 2;
     println!("el valor de la variable inmutable 'x' es: {}", x);
     //x = 2; //Por defecto let crea variables inmutables
@@ -35,13 +34,13 @@ fn prueba_inmutable() {
 }
 
 fn prueba_constante() {
-    inicio_funcion("2. PRUEBA CONSTANTE");
+    title("2. PRUEBA CONSTANTE");
     const PI: f64 = 3.141516;
     println!("el valor de la constante 'PI' es: {}", PI);
 }
 
 fn shadowing() {
-    inicio_funcion("3. PRUEBA SHADOWING");
+    title("3. PRUEBA SHADOWING");
     let a: i32 = 1;
     let a: i32 = a + 23;
     let a: i32 = a - 23 / 23; //el resultado es 1 debido a que la jerarquía de operaciones hace que primero se divida 23/23
@@ -49,7 +48,7 @@ fn shadowing() {
 }
 
 fn tuples() {
-    inicio_funcion("4. Tuplas");
+    title("4. Tuplas");
     let user: (char, bool, i8, f32) = ('A', true, 30, 3.14);
     println!("Los datos del usuario 'user' son:");
     println!("inicial: {}", user.0);
@@ -59,7 +58,7 @@ fn tuples() {
 }
 
 fn arrays() {
-    inicio_funcion("5. Matrices");
+    title("5. Matrices");
     let numeros = [1, 2, 3, 4];
     println!("El primer elemento del array es: {}", numeros[0]);
     //println!("si me desbordo de la longitud del array obtengo: {}",numeros[4]); //error: "this operation will panic at runtime"
@@ -70,7 +69,7 @@ fn arrays() {
 }
 
 fn ciclos() {
-    inicio_funcion("6. ciclos While y Loop");
+    title("6. ciclos While y Loop");
     let mut numero: i32 = 0;
     println!("la variable 'numero' inicia en '0'");
     while numero < 10 {
@@ -95,7 +94,7 @@ fn ejemplo_factorial() {
 }
 
 fn calcular_factorial(numero: i128) -> i128 {
-    inicio_funcion("7. Ejemplo 1: Condicionales");
+    title("7. Ejemplo 1: Condicionales");
     if numero == 0 || numero == 1 {
         1
     } else {
@@ -114,7 +113,7 @@ fn ejemplo_primo() {
 }
 
 fn es_primo(numero: u128) -> bool {
-    inicio_funcion("8. Ejemplo 2: Condicionales");
+    title("8. Ejemplo 2: Condicionales");
     let mut resultado = false;
     let numero_normalizado = numero as f64;
     if numero <= 1 {
@@ -135,7 +134,7 @@ fn ejemplo_string_slice() {
 }
 
 fn string_slice() {
-    inicio_funcion("8. str (pedazo de string)");
+    title("8. str (pedazo de string)");
     let saludo = "hola";
     println!("{}", saludo);
     println!("{}", saludo);
@@ -144,7 +143,7 @@ fn string_slice() {
 }
 
 fn copy_and_move() {
-    inicio_funcion("9. Copy, Move y Clone");
+    title("9. Copy, Move y Clone");
     //copy
     let var1 = 2;
     let var2 = var1;
@@ -166,7 +165,7 @@ fn copy_and_move() {
 }
 
 fn prueba_concatenar_str() {
-    inicio_funcion("10. prueba concatenar str");
+    title("10. prueba concatenar str");
     let mut texto_1 = "palabra";
     println!("{}", texto_1);
     texto_1 = "nueva palabra";
@@ -181,7 +180,7 @@ fn prueba_concatenar_str() {
 }
 
 fn strings() {
-    inicio_funcion("11. strings");
+    title("11. strings");
     let texto_1 = String::from("Texto inmutable");
     println!("la variable texto_1 es inmutable y su contenido es: {}", texto_1);
     let mut texto_2 = String::from("texto mutable");
@@ -191,7 +190,7 @@ fn strings() {
 }
 
 fn ownership_en_parametros() {
-    inicio_funcion("12. Propiedad al pasar parámetros a una función");
+    title("12. Propiedad al pasar parámetros a una función");
     //con valores que hacen el copy automático
     let numero = 20;
     fn imprimir_numero(parametro: i32) {
@@ -210,7 +209,7 @@ fn ownership_en_parametros() {
 }
 
 fn ownership_en_parametros_strings() {
-    inicio_funcion("13. Propiedad al pasar Strings como parámetros a una función");
+    title("13. Propiedad al pasar Strings como parámetros a una función");
     //perder propiedad
     let texto = String::from("texto");
     fn prestar(parametro: String) -> String {
@@ -242,7 +241,7 @@ fn ownership_en_parametros_strings() {
 }
 
 fn exercise_1_ownership() {
-    inicio_funcion("Exercise 1: Ownership");
+    title("Exercise 1: Ownership");
     println!("-> Por favor introduce tu nombre: ");
     let mut name = String::new();
     std::io::stdin().read_line(&mut name).unwrap();
@@ -264,7 +263,7 @@ fn exercise_1_ownership() {
 }
 
 fn estructura_como_tupla() {
-    inicio_funcion("14. struct como tupla");
+    title("14. struct como tupla");
     struct RGBColor(u8, u8, u8);
     let rojo = RGBColor(255, 0, 0);
     let celeste = RGBColor(0, 255, 255);
@@ -278,7 +277,7 @@ fn estructura_como_tupla() {
 }
 
 fn estructura_sin_implementacion() {
-    inicio_funcion("15. struct sin implementación");
+    title("15. struct sin implementación");
     #[derive(Debug)] //este trair es obligatorio escribirlo al principio de la función que intente imprimir la struct completa, o generará error
     struct Suscriptor {
         es_inteligente: bool,
