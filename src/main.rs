@@ -26,15 +26,17 @@ fn subtitle1(texto: &str) {
     println!("  {}", texto)
 }
 
-fn conclusion(text: &str) {
-    println!(" -> {}", text)
+fn note(text: &str) {
+    println!(" -> NOTE: {}", text)
 }
 
 fn prueba_inmutable() {
     title("1. PRUEBA INMUTABLE");
     let x = 2;
     println!("el valor de la variable inmutable 'x' es: {}", x);
-    //x = 2; //Por defecto let crea variables inmutables
+    note(
+        "Al intentar reasignar 'x = 3' se genera un error ya que Por defecto 'let' crea variables inmutables"
+    );
     let mut y = 5;
     println!("el valor de la variable mutable 'y' es: {}", y);
     y = 8;
