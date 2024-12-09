@@ -11,8 +11,8 @@ fn main() {
     copy_and_move();
     concatenate_str();
     strings();
-    ownership_en_parametros();
-    ownership_en_parametros_strings();
+    ownership_in_parameters();
+    ownership_in_parameters_strings();
     exercise_1_ownership();
     struct_as_tuple();
     struct_without_implementation();
@@ -230,7 +230,7 @@ fn strings() {
     println!("la variable texto_2 ha sido mutada y su nuevo contenido es: {}", texto_2);
 }
 
-fn ownership_en_parametros() {
+fn ownership_in_parameters() {
     title("12. PROPIEDAD (OWNERSHIP) AL PASAR PARÁMETROS A UNA FUNCIÓN");
     subtitle1("12.1 con un número que hace el copy automático");
     let numero = 20;
@@ -254,7 +254,7 @@ fn ownership_en_parametros() {
     println!("el valor de la variable 'pieza_de_string' después de pasarse como parámetro es: {}", pieza_de_string)
 }
 
-fn ownership_en_parametros_strings() {
+fn ownership_in_parameters_strings() {
     title("13. Propiedad al pasar Strings como parámetros a una función");
     //perder propiedad
     let texto = String::from("texto");
