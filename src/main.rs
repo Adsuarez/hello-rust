@@ -16,6 +16,7 @@ fn main() {
     exercise_1_ownership();
     struct_as_tuple();
     struct_without_implementation();
+    struct_update_syntax();
 }
 
 fn title(texto: &str) {
@@ -367,4 +368,29 @@ fn struct_without_implementation() {
     println!("¿es inteligente?: {}", suscriptor1.es_inteligente);
     println!("nombre: {}", suscriptor1.nombre);
     println!("Cantidad de seguidores: {}", suscriptor1.seguidores)
+}
+
+fn struct_update_syntax() {
+    title("16. STRUCT UPDATE SYNTAX (PROPAGACIÓN/SPREAD)");
+    struct House {
+        m2: u128,
+        rooms: u8,
+    }
+    let house1: House = House { m2: 1250, rooms: 2 };
+
+    println!(
+        "La casa 'house1' tiene {} metros cuadrados y {} habitaciones",
+        house1.m2,
+        house1.rooms
+    );
+
+    let house2: House = House { rooms: 3, ..house1 };
+    println!(
+        "La casa 'house2' tiene {} metros cuadrados y {} habitaciones",
+        house2.m2,
+        house2.rooms
+    );
+    note(
+        "Al usar la sintaxis de actualización de struct '..struct' se propagan los campos reutilizables de la estructura"
+    );
 }
