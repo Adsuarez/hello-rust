@@ -7,7 +7,7 @@ fn main() {
     cycles();
     example_factorial();
     example_prime_number();
-    ejemplo_string_slice();
+    example_string_slice();
     copy_and_move();
     prueba_concatenar_str();
     strings();
@@ -154,18 +154,24 @@ fn is_prime(numero: u128) -> bool {
     return resultado;
 }
 
-fn ejemplo_string_slice() {
-    //let recibe_str = string_slice(); //->VER NOTA A
+fn example_string_slice() {
+    note(
+        "desde la función 'example_string_slice' se intenta crear una variable que reciba el resultado de la función 'string_slice', pero esto genera un error. Ejemplo: let recibe_str = string_slice();"
+    );
     string_slice();
 }
 
 fn string_slice() {
-    title("8. str (pedazo de string)");
+    title("8. STR PEDAZO O PIEZA DE STRING");
     let saludo = "hola";
     println!("{}", saludo);
     println!("{}", saludo);
-    //return saludo //->NOTA A: si intentamos retornar la variable, nos genera un error ya que 'str' no contiene el razgo Sized por lo que en tiempo de ejecución nos e puede conocer el tamaño de dicha variable
-    //Después de que se imprima la variable saludo, dicha variable es eliminada del stack de memoria por RUST, ya que no se vuelve a usar en el código
+    note(
+        "Si al finalizar una función intentamos retornar un 'str' genera un error, ya que 'str' no contiene el razgo Sized por lo que en tiempo de ejecución no se puede conocer el tamaño de dicho valor"
+    );
+    note(
+        "Después de crear la variable de tipo 'str' y se haya usado, dicha variable es eliminada del stack de memoria por RUST, ya que no se vuelve a usar en el código, y de esta manera RUST asegura la limpieza de la memoria"
+    );
 }
 
 fn copy_and_move() {
