@@ -221,7 +221,7 @@ fn concatenate_str() {
 }
 
 fn strings() {
-    title("11. strings");
+    title("11. STRINGS");
     let texto_1 = String::from("Texto inmutable");
     println!("la variable texto_1 es inmutable y su contenido es: {}", texto_1);
     let mut texto_2 = String::from("texto mutable");
@@ -231,18 +231,23 @@ fn strings() {
 }
 
 fn ownership_en_parametros() {
-    title("12. Propiedad al pasar parámetros a una función");
-    //con valores que hacen el copy automático
+    title("12. PROPIEDAD (OWNERSHIP) AL PASAR PARÁMETROS A UNA FUNCIÓN");
+    subtitle1("12.1 con un número que hace el copy automático");
     let numero = 20;
     fn imprimir_numero(parametro: i32) {
         println!("desde la función 'imprimir_numero' el valor del parámetro es: {}", parametro)
     }
     imprimir_numero(numero);
-    println!("el valor de la variable 'numero' después de pasarse como parámetro es: {}", numero); //Esto demuestra que numero no ha dejado de existir aunque su valor se pasó como parámetro, lo que indica que solo se copió
-    //con str que no se puede copiar, solo pasar como referencia
+    println!("el valor de la variable 'numero' después de pasarse como parámetro es: {}", numero);
+    note(
+        "Al poder imprimir la variable número luego de haberla pasado como parámetro, se demuestra que numero no ha dejado de existir, lo que indica que solo se copió"
+    );
+    subtitle1("12.2 con 'str' que no se puede copiar, solo pasar como referencia");
     let pieza_de_string = "TEXTO";
     fn imprimir_pieza_de_texto(slice: &str) {
-        //aquí si no se pone el símbolo '&' genera un error, ya que se está obligado a pasar la referencia del str y no su valor
+        note(
+            "si aquí no se pone el símbolo '&' genera un error, ya que se está obligado a pasar la referencia del 'str' y no su valor"
+        );
         println!("desde la función 'imprimir_pieza_de_texto' el valor del parámetro es: {}", slice)
     }
     imprimir_pieza_de_texto(&pieza_de_string);
