@@ -4,9 +4,9 @@ fn main() {
     shadowing();
     tuples();
     arrays();
-    ciclos();
-    ejemplo_factorial();
-    ejemplo_primo();
+    cycles();
+    example_factorial();
+    example_prime_number();
     ejemplo_string_slice();
     copy_and_move();
     prueba_concatenar_str();
@@ -70,7 +70,7 @@ fn shadowing() {
 }
 
 fn tuples() {
-    title("4. Tuplas");
+    title("4. TUPLAS");
     let user: (char, bool, i8, f32) = ('A', true, 30, 3.14);
     println!("Los datos del usuario 'user' son:");
     println!("inicial: {}", user.0);
@@ -80,34 +80,38 @@ fn tuples() {
 }
 
 fn arrays() {
-    title("5. Matrices");
+    title("5. MATRICES O ARREGLOS");
     let numeros = [1, 2, 3, 4];
     println!("El primer elemento del array es: {}", numeros[0]);
-    //println!("si me desbordo de la longitud del array obtengo: {}",numeros[4]); //error: "this operation will panic at runtime"
-    println!("5.1 ciclo for para iterar el array:");
+    note(
+        "si se intenta acceder a un valor por fuera del tamaño del array se obtiene un 'PANIC'. Por ejemplo: println!('{}',numeros[4]);"
+    );
+    subtitle1("5.1 ciclo for para iterar el array:");
     for i in numeros.iter() {
         println!("{}", i);
     }
 }
 
-fn ciclos() {
-    title("6. ciclos While y Loop");
+fn cycles() {
+    title("6. CICLOS WHILE Y LOOP");
     let mut numero: i32 = 0;
     println!("la variable 'numero' inicia en '0'");
     while numero < 10 {
         numero = numero + 1;
         println!("la variable 'numero' ahora es: {}", numero);
     }
+
     loop {
         numero = numero - 10;
         break;
     }
     println!("al final de loop el valor de la variable 'numero' es: {}", numero);
+    note("el loop se interrumpe al escribir la palabra 'break'");
 }
 
-fn ejemplo_factorial() {
+fn example_factorial() {
     let numero_factorial: i128 = 3;
-    let resultado_factorial = calcular_factorial(numero_factorial);
+    let resultado_factorial = factorial_calculation(numero_factorial);
     println!(
         "el resultado del factorial para el valor {} es: {}",
         numero_factorial,
@@ -115,8 +119,8 @@ fn ejemplo_factorial() {
     )
 }
 
-fn calcular_factorial(numero: i128) -> i128 {
-    title("7. Ejemplo 1: Condicionales");
+fn factorial_calculation(numero: i128) -> i128 {
+    title("7. CONDICIONALES, EJEMPLO 1: ");
     if numero == 0 || numero == 1 {
         1
     } else {
@@ -128,14 +132,14 @@ fn calcular_factorial(numero: i128) -> i128 {
     }
 }
 
-fn ejemplo_primo() {
+fn example_prime_number() {
     let numero_incognita: u128 = 999983;
-    let resultado_es_primo = es_primo(numero_incognita);
+    let resultado_es_primo = is_prime(numero_incognita);
     println!("¿el número {} es primo? = {}", numero_incognita, resultado_es_primo);
 }
 
-fn es_primo(numero: u128) -> bool {
-    title("8. Ejemplo 2: Condicionales");
+fn is_prime(numero: u128) -> bool {
+    title("8. CONDICIONALES, EJEMPLO 2: ");
     let mut resultado = false;
     let numero_normalizado = numero as f64;
     if numero <= 1 {
