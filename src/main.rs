@@ -14,7 +14,7 @@ fn main() {
     ownership_en_parametros();
     ownership_en_parametros_strings();
     exercise_1_ownership();
-    estructura_como_tupla();
+    struct_as_tuple();
     estructura_sin_implementacion();
 }
 
@@ -308,7 +308,7 @@ fn exercise_1_ownership() {
     println!("{}", name);
 }
 
-fn estructura_como_tupla() {
+fn struct_as_tuple() {
     title("14. struct como tupla");
     struct RGBColor(u8, u8, u8);
     let rojo = RGBColor(255, 0, 0);
