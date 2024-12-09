@@ -9,7 +9,7 @@ fn main() {
     example_prime_number();
     example_string_slice();
     copy_and_move();
-    prueba_concatenar_str();
+    concatenate_str();
     strings();
     ownership_en_parametros();
     ownership_en_parametros_strings();
@@ -196,19 +196,28 @@ fn copy_and_move() {
     println!("la variable texto_2 es: {}", texto_2);
 }
 
-fn prueba_concatenar_str() {
-    title("10. prueba concatenar str");
+fn concatenate_str() {
+    title("10. CONCATENATE STR");
     let mut texto_1 = "palabra";
     println!("{}", texto_1);
     texto_1 = "nueva palabra";
     println!("{}", texto_1);
     let mut texto_2 = "añadida";
     println!("{}", texto_2);
-    //let concatenar = concat!(texto_1, texto_2); //->Esto arroja error dado a que espera solo literales como "hola", más no un str
-    //let mut concatenar = texto_1 + texto_2;// -> esto arroja error dado a que no se pueden sumar str porque requiere que la adisión tenga un Ownership
+    note(
+        "si se intenta 'let concatenar = concat!(texto_1, texto_2);' Esto arroja error dado a que espera solo literales como 'hola', más no un str"
+    );
+    note(
+        "si se intenta 'let mut concatenar = texto_1 + texto_2;' esto arroja error dado a que no se pueden sumar str porque requiere que la adisión tenga un Ownership"
+    );
     texto_2 = "fue añadida";
-    println!("{} {}", texto_1, texto_2); //Esta sería la única forma de unir dos str
-    //en conclusión como el str se almacena en STACK, debe tener un tamaño fijo conocido. Y al permitirme ponerle mut a la variable, lo único que puedo hacer es reasignarle un valor, pero no mutar el valor en sí mismo.
+    println!("{} {}", texto_1, texto_2);
+    note(
+        "usar la función 'println!('{} {}', texto_1, texto_2);' sería la única forma de unir dos str"
+    );
+    note(
+        "en conclusión como el 'str' se almacena en STACK, debe tener un tamaño fijo conocido. Y al definir la variable con 'mut', lo único que puedo hacer es reasignarle un valor, pero no mutar el valor en sí mismo."
+    );
 }
 
 fn strings() {
