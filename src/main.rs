@@ -17,6 +17,7 @@ fn main() {
     struct_as_tuple();
     struct_without_implementation();
     struct_update_syntax();
+    struct_with_implementation();
 }
 
 fn title(texto: &str) {
@@ -393,4 +394,49 @@ fn struct_update_syntax() {
     note(
         "Al usar la sintaxis de actualización de struct '..struct' se propagan los campos reutilizables de la estructura"
     );
+}
+
+fn struct_with_implementation() {
+    struct Student {
+        id: u32,
+        age: u8,
+        name: String,
+        course: String,
+        active: bool,
+    }
+
+    impl Student {
+        //Función asociada (Constructor)
+        fn new(id: u32, age: u8, name: String, course: String) -> Student {
+            Student {
+                id,
+                age,
+                name,
+                course,
+                active: true,
+            }
+        }
+        fn leaves(&mut self) {
+            self.active = false;
+        }
+    }
+
+    let mut student1 = Student::new(123, 32, String::from("Pedro"), String::from("ingles"));
+
+    println!("los datos del nuevo estudiante 'student1' son: ");
+    println!("id = {}", student1.id);
+    println!("edad = {}", student1.age);
+    println!("nombre = {}", student1.name);
+    println!("curso = {}", student1.course);
+    println!("activo = {}", student1.active);
+
+    student1.leaves();
+    println!(
+        "Después de ejecutar la función asociada 'leaves()' para el estudiante 'student1' sus datos son: "
+    );
+    println!("id = {}", student1.id);
+    println!("edad = {}", student1.age);
+    println!("nombre = {}", student1.name);
+    println!("curso = {}", student1.course);
+    println!("activo = {}", student1.active);
 }
