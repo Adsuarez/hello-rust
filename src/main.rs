@@ -19,6 +19,7 @@ fn main() {
     struct_update_syntax();
     struct_with_implementation();
     simple_enum();
+    enum_with_struct();
 }
 
 fn title(texto: &str) {
@@ -460,4 +461,38 @@ fn simple_enum() {
     println!("el genero de juan es: {:?}", Genero::from(juan));
     println!("el genero de maria es: {:?}", Genero::from(maria));
     println!("el genero de jose es: {:?}", Genero::from(jose));
+}
+
+fn enum_with_struct() {
+    title("19. ENUM USADO POR UN STRUCT");
+    #[derive(Debug)]
+    enum Fuerza {
+        Poca,
+        Media,
+        Avanzada,
+    }
+
+    struct Persona {
+        name: String,
+        fuerza: Fuerza,
+    }
+
+    let juan = Persona {
+        name: String::from("Juan"),
+        fuerza: Fuerza::Media,
+    };
+
+    let pedro = Persona {
+        name: String::from("Juan"),
+        fuerza: Fuerza::Poca,
+    };
+
+    let maria = Persona {
+        name: String::from("Juan"),
+        fuerza: Fuerza::Avanzada,
+    };
+
+    println!("{} es una Persona y su nivel de fuerza es: {:?}", juan.name, juan.fuerza);
+    println!("{} es una Persona y su nivel de fuerza es: {:?}", pedro.name, pedro.fuerza);
+    println!("{} es una Persona y su nivel de fuerza es: {:?}", maria.name, maria.fuerza);
 }
