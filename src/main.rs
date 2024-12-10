@@ -397,6 +397,7 @@ fn struct_update_syntax() {
 }
 
 fn struct_with_implementation() {
+    title("17. STRUCT CON IMPLEMENTACIÓN");
     struct Student {
         id: u32,
         age: u8,
