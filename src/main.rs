@@ -18,6 +18,7 @@ fn main() {
     struct_without_implementation();
     struct_update_syntax();
     struct_with_implementation();
+    simple_enum();
 }
 
 fn title(texto: &str) {
@@ -440,4 +441,23 @@ fn struct_with_implementation() {
     println!("nombre = {}", student1.name);
     println!("curso = {}", student1.course);
     println!("activo = {}", student1.active);
+}
+
+fn simple_enum() {
+    title("18. ENUM SIMPLE");
+
+    #[derive(Debug)]
+    enum Genero {
+        Masculino,
+        Femenino,
+        NoBinario,
+    }
+
+    let juan = Genero::Masculino;
+    let maria = Genero::Femenino;
+    let jose = Genero::NoBinario;
+
+    println!("el genero de juan es: {:?}", Genero::from(juan));
+    println!("el genero de maria es: {:?}", Genero::from(maria));
+    println!("el genero de jose es: {:?}", Genero::from(jose));
 }
