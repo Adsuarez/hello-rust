@@ -20,6 +20,7 @@ fn main() {
     struct_with_implementation();
     simple_enum();
     enum_with_struct();
+    enum_with_values();
 }
 
 fn title(texto: &str) {
@@ -495,4 +496,23 @@ fn enum_with_struct() {
     println!("{} es una Persona y su nivel de fuerza es: {:?}", juan.name, juan.fuerza);
     println!("{} es una Persona y su nivel de fuerza es: {:?}", pedro.name, pedro.fuerza);
     println!("{} es una Persona y su nivel de fuerza es: {:?}", maria.name, maria.fuerza);
+}
+
+fn enum_with_values() {
+    title("20 ENUM CON VALORES ESPECÍFICOS");
+    #[derive(Debug)]
+    enum Nivel {
+        Bajo = 10,
+        Medio = 50,
+        Alto = 100,
+    }
+    let tortuga = Nivel::Bajo;
+    let perro = Nivel::Medio;
+    let jaguar = Nivel::Alto;
+    println!("El nivel en 'Variante' de la tortuga es: {:?}", tortuga);
+    println!("El nivel en 'Valor de la variante' de la tortuga es: {:?}", tortuga as u32);
+    println!("El nivel en 'Variante' de la perro es: {:?}", perro);
+    println!("El nivel en 'Valor de la variante' del perro es: {:?}", perro as u32);
+    println!("El nivel en 'Variante' del jaguar es: {:?}", jaguar);
+    println!("El nivel en 'Valor de la variante' del jaguar es: {:?}", jaguar as u32)
 }
